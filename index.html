@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Стратегическое мышление | Презентация методов</title>
+    <title>Стратегическое мышление | 22 метода и алгоритма</title>
     <style>
         * {
             margin: 0;
@@ -21,7 +21,6 @@
             padding: 2rem 1rem;
         }
 
-        /* основной контейнер презентации */
         .presentation-container {
             max-width: 1100px;
             width: 100%;
@@ -32,7 +31,6 @@
             position: relative;
         }
 
-        /* слайдер */
         .slides-wrapper {
             position: relative;
             overflow: hidden;
@@ -51,9 +49,8 @@
             background: #FFFFFF;
         }
 
-        /* типографика и деловой стиль */
         .slide-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
             letter-spacing: -0.01em;
             margin-bottom: 1.2rem;
@@ -67,7 +64,7 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 800;
             border-left: none;
             padding-left: 0;
@@ -75,7 +72,7 @@
         }
 
         .subhead {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #4A627A;
             border-top: 1px solid #E2E8F0;
             display: inline-block;
@@ -85,15 +82,15 @@
         .method-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 1.8rem 0 1rem;
+            gap: 1.2rem;
+            margin: 1.5rem 0 1rem;
         }
 
         .card-mini {
             background: #F8FAFE;
-            border-radius: 20px;
-            padding: 1.2rem;
-            flex: 1 1 200px;
+            border-radius: 18px;
+            padding: 1rem;
+            flex: 1 1 180px;
             transition: all 0.2s;
             border: 1px solid #E9EDF2;
         }
@@ -101,28 +98,28 @@
         .card-mini:hover {
             border-color: #2C7DA0;
             background: #FFFFFF;
-            box-shadow: 0 8px 18px rgba(44,125,160,0.08);
+            box-shadow: 0 6px 14px rgba(44,125,160,0.08);
         }
 
         .card-mini strong {
             color: #2C7DA0;
-            font-size: 1.1rem;
+            font-size: 1rem;
             display: block;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
 
-        .law-list, .method-list {
+        .method-list {
             list-style: none;
             margin: 1rem 0 0 0;
         }
-        .law-list li, .method-list li {
+        .method-list li {
             margin-bottom: 0.6rem;
             padding-left: 1.5rem;
             position: relative;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             line-height: 1.4;
         }
-        .law-list li::before, .method-list li::before {
+        .method-list li::before {
             content: "—";
             color: #2C7DA0;
             position: absolute;
@@ -132,37 +129,38 @@
 
         .highlight-block {
             background: #F1F6F9;
-            border-radius: 20px;
-            padding: 1.3rem 1.6rem;
-            margin: 1.5rem 0;
+            border-radius: 18px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
             border-left: 4px solid #2C7DA0;
         }
 
         .tag-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.7rem;
+            gap: 0.6rem;
             margin: 1rem 0;
         }
         .tag {
             background: #EEF2F7;
             padding: 0.3rem 1rem;
             border-radius: 40px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             color: #1F4E6E;
+            letter-spacing: 0.01em;
         }
 
         .example-quote {
             background: #FFFFFF;
             border-radius: 16px;
-            padding: 1rem 1.2rem;
+            padding: 0.9rem 1.2rem;
             box-shadow: 0 2px 6px rgba(0,0,0,0.03);
             border: 1px solid #E4EAF1;
-            margin-top: 1.2rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
         }
 
-        /* навигация */
         .nav-controls {
             display: flex;
             justify-content: space-between;
@@ -175,10 +173,10 @@
         .nav-btn {
             background: #FFFFFF;
             border: 1px solid #CBD5E1;
-            padding: 0.6rem 1.3rem;
+            padding: 0.5rem 1.2rem;
             border-radius: 40px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #1E2F3E;
             cursor: pointer;
             transition: 0.2s;
@@ -197,6 +195,8 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .dot {
@@ -219,14 +219,14 @@
                 padding: 1.5rem 1.2rem 2rem;
             }
             .slide-title {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
             .gradient-title {
-                font-size: 2rem;
+                font-size: 1.9rem;
             }
             .nav-btn {
                 padding: 0.4rem 1rem;
-                font-size: 0.8rem;
+                font-size: 0.75rem;
             }
         }
         footer {
@@ -246,9 +246,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
         }
         .mt-2 {
             margin-top: 1rem;
+        }
+        .mb-1 {
+            margin-bottom: 0.5rem;
+        }
+        .text-small {
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -256,40 +264,57 @@
 <div class="presentation-container">
     <div class="slides-wrapper">
         <div class="slides-track" id="slidesTrack">
-            <!-- СЛАЙД 1 - титульный градиент -->
+            <!-- 22 СЛАЙДА: методы и алгоритмы -->
+
+            <!-- 1. Титульный -->
             <div class="slide">
                 <div class="gradient-title">Стратегическое мышление<br>и принятие решений</div>
-                <div class="subhead">Инструменты, алгоритмы и методы<br>для интеллектуальной эффективности</div>
-                <div class="method-grid" style="margin-top: 2.5rem;">
-                    <div class="card-mini"><strong>20+</strong><br>методов и техник</div>
+                <div class="subhead">22 ключевых метода, алгоритма и инструмента<br>для интеллектуальной эффективности</div>
+                <div class="method-grid" style="margin-top: 2rem;">
+                    <div class="card-mini"><strong>22+</strong><br>техник и фреймворков</div>
                     <div class="card-mini"><strong>Системный подход</strong><br>От критики до сценариев</div>
-                    <div class="card-mini"><strong>Практические кейсы</strong><br>Решения высокого качества</div>
+                    <div class="card-mini"><strong>Практические кейсы</strong><br>Бизнес-решения высокого качества</div>
                 </div>
-                <div class="highlight-block" style="background:#F8FBFE;">
-                    🎯 <strong>Главный принцип</strong> — отложить решение, собрать факты, рассмотреть альтернативы. Мышление тренируется как навык.
-                </div>
+                <div class="highlight-block">🎯 <strong>Главный принцип</strong> — отложить решение, собрать факты, рассмотреть альтернативы. Мышление тренируется как навык.</div>
             </div>
 
-            <!-- СЛАЙД 2 - Критическое мышление -->
+            <!-- 2. Уровни мышления: автопилот, суфлер, диффузное -->
+            <div class="slide">
+                <div class="slide-title">🧠 Уровни мышления</div>
+                <p>Модель «айсберг»: сознание (рацио) и подсознание (опыт, интуиция).</p>
+                <div class="tag-group">
+                    <span class="tag">Автопилот</span>
+                    <span class="tag">Режим суфлёра</span>
+                    <span class="tag">Диффузное мышление</span>
+                </div>
+                <ul class="method-list">
+                    <li><strong>Автопилот</strong> — быстрые решения без осознания (рискованно для важного).</li>
+                    <li><strong>Суфлёр</strong> — сознание запрашивает данные из подсознания.</li>
+                    <li><strong>Диффузное</strong> — подсознание само решает задачи (озарение, инсайт).</li>
+                </ul>
+                <div class="example-quote">📌 Значение: развивайте осознанное мышление, чтобы наполнять подсознание качественной информацией.</div>
+            </div>
+
+            <!-- 3. Критическое мышление -->
             <div class="slide">
                 <div class="slide-title">🔍 Критическое мышление</div>
-                <p><strong>Здоровый пессимизм и отделение фактов от мнений.</strong> Основа — двойная петля обучения.</p>
+                <p>Здоровый пессимизм, отделение фактов от мнений. Двойная петля обучения.</p>
                 <div class="highlight-block">
                     <strong>«Богу верим, от остальных требуются данные»</strong><br>
-                    Не принимайте на веру — требуйте доказательств.
+                    Ничего не принимать на веру без доказательств.
                 </div>
                 <ul class="method-list">
                     <li>Одинарная петля: исправляем ошибку, не меняя подход.</li>
-                    <li><strong>Двойная петля:</strong> анализируем предпосылки, цели, ценности.</li>
+                    <li><strong>Двойная петля:</strong> анализ предпосылок, целей, ценностей.</li>
                     <li>Рефлексия: «Что сделано? → результат? → почему? → урок?»</li>
                 </ul>
-                <div class="example-quote">📌 Кейс: вместо немедленного решения — задайте 5 «почему», чтобы найти корень.</div>
+                <div class="example-quote">📌 Кейс: вместо немедленного решения задайте 5 «почему», чтобы найти корневую причину.</div>
             </div>
 
-            <!-- СЛАЙД 3 - Логическое мышление (законы логики) -->
+            <!-- 4. Логическое мышление + законы -->
             <div class="slide">
                 <div class="slide-title">⚙️ Логическое мышление</div>
-                <p><strong>Анатомия мышления: причинно-следственные связи, законы логики.</strong></p>
+                <p>Анатомия мышления: причинно-следственные связи, законы логики.</p>
                 <div class="tag-group">
                     <span class="tag">Тождества</span>
                     <span class="tag">Непротиворечия</span>
@@ -297,48 +322,44 @@
                     <span class="tag">Достаточного основания</span>
                 </div>
                 <ul class="method-list">
-                    <li>Не подменяйте понятия (я про Фому, он про Ерёму).</li>
-                    <li>Не допускайте противоречий в суждениях.</li>
-                    <li>Каждое утверждение должно быть обосновано.</li>
+                    <li>Не подменяйте понятия в дискуссии.</li>
+                    <li>Не допускайте одновременных противоречий.</li>
+                    <li>Любое утверждение должно быть обосновано.</li>
                 </ul>
-                <div class="example-quote">💡 «Если логика не в чести — ни один довод не будет услышан». Построение древовидных диаграмм причин.</div>
+                <div class="example-quote">💡 «Если логика не в чести — ни один довод не будет услышан». Используйте древовидные диаграммы причин.</div>
             </div>
 
-            <!-- СЛАЙД 4 - Системное мышление -->
+            <!-- 5. Системное мышление -->
             <div class="slide">
                 <div class="slide-title">🌐 Системное мышление</div>
-                <p><strong>Эмерджентность</strong> — целое больше суммы частей. Система состоит из элементов, связанных и динамичных.</p>
+                <p><strong>Эмерджентность:</strong> целое больше суммы частей. Система = элементы + связи + динамика.</p>
                 <div class="highlight-block">
-                    <strong>Три правила:</strong><br>
+                    Три правила:<br>
                     1. Объект как система элементов.<br>
-                    2. Процессы в динамике (куда шайба будет).<br>
+                    2. Процессы в динамике (куда будет шайба).<br>
                     3. Взаимодействие элементов и внешней среды.
                 </div>
-                <div class="flex-between mt-2">
-                    <span class="tag">Цикл PDCA</span>
-                    <span class="tag">Единый ритм задач</span>
-                    <span class="tag">Спиннер-устойчивость</span>
-                </div>
-                <div class="example-quote">📈 Пример: изменение в одном отделе влияет на всю компанию. Всегда анализируйте системные последствия.</div>
+                <div class="flex-between"><span class="tag">Цикл PDCA</span><span class="tag">Единый ритм</span><span class="tag">Устойчивость (спиннер)</span></div>
+                <div class="example-quote">📈 Пример: изменение в одном отделе влияет на всю компанию. Анализируйте системные последствия.</div>
             </div>
 
-            <!-- СЛАЙД 5 - Творческое мышление (модель Уолласа + амбициозные цели) -->
+            <!-- 6. Творческое мышление (модель Уолласа) -->
             <div class="slide">
                 <div class="slide-title">💡 Творческое мышление</div>
-                <p><strong>Творческий процесс доступен каждому.</strong> 4 стадии: подготовка → инкубация → озарение → проверка.</p>
+                <p>4 стадии: подготовка → инкубация → озарение → проверка. Доступно каждому.</p>
                 <div class="method-grid">
-                    <div class="card-mini"><strong>Амбициозные цели</strong><br>«Невозможная» задача стимулирует прорыв</div>
-                    <div class="card-mini"><strong>Быстро+качественно+недорого+X</strong><br>Новое измерение ценности</div>
+                    <div class="card-mini"><strong>Амбициозные цели</strong><br>стимулируют прорыв</div>
+                    <div class="card-mini"><strong>Быстро+качественно+недорого+X</strong><br>новое измерение ценности</div>
                 </div>
-                <div class="example-quote">✨ Кейс: «сделать отметку на потолке» — решение нашлось через нестандартный инструмент (стул + человек).</div>
+                <div class="example-quote">✨ Кейс: «сделать отметку на потолке» — решение пришло через нестандартный инструмент (стул + человек).</div>
             </div>
 
-            <!-- СЛАЙД 6 - Групповое мышление: 6 шляп и адвокат дьявола -->
+            <!-- 7. Групповое мышление: 6 шляп де Боно и адвокат дьявола -->
             <div class="slide">
                 <div class="slide-title">👥 Групповое мышление</div>
-                <p>Структурированные методы, избегая «групповщины».</p>
+                <p>Структурированные методы против «групповщины».</p>
                 <div class="tag-group">
-                    <span class="tag">Шесть шляп де Боно</span>
+                    <span class="tag">6 шляп</span>
                     <span class="tag">Адвокат дьявола</span>
                     <span class="tag">Мозговой штурм</span>
                     <span class="tag">Совещания по Адизесу</span>
@@ -347,104 +368,193 @@
                     <li>Белая (факты), Красная (эмоции), Черная (критика), Желтая (позитив), Зеленая (креатив), Синяя (управление).</li>
                     <li>Назначьте критика, который оспаривает идеи — повышает качество решений.</li>
                 </ul>
-                <div class="highlight-block">🎯 Результат: полный учёт альтернатив, отсутствие доминирования одного лица.</div>
+                <div class="highlight-block">🎯 Результат: полный учёт альтернатив, отсутствие доминирования.</div>
             </div>
 
-            <!-- СЛАЙД 7 - Квадрат Декарта -->
+            <!-- 8. Визуальное мышление + скетчноутинг -->
+            <div class="slide">
+                <div class="slide-title">🎨 Визуальное мышление</div>
+                <p>Использование рисунков, схем, диаграмм для анализа и коммуникации.</p>
+                <div class="tag-group">
+                    <span class="tag">Скетчноутинг</span>
+                    <span class="tag">Интеллект-карты</span>
+                    <span class="tag">Пузырьковые диаграммы</span>
+                </div>
+                <div class="example-quote">📌 Правило: «Изображение стоит тысячи слов». Рисуйте проблему — увидите неочевидные связи.</div>
+                <div class="highlight-block">🖍️ Практика: карта рынка, схема любовного треугольника, бизнес-процесс — всё это визуальные модели.</div>
+            </div>
+
+            <!-- 9. Квадрат Декарта -->
             <div class="slide">
                 <div class="slide-title">📐 Квадрат Декарта</div>
-                <p><strong>Четыре вопроса для всестороннего анализа решения.</strong></p>
-                <div class="method-grid" style="gap: 1rem;">
-                    <div class="card-mini">Что будет, если это произойдет?</div>
-                    <div class="card-mini">Что будет, если это НЕ произойдет?</div>
+                <p>4 вопроса для всестороннего анализа решения.</p>
+                <div class="method-grid" style="gap: 0.8rem;">
+                    <div class="card-mini">Что будет, если произойдет?</div>
+                    <div class="card-mini">Что будет, если НЕ произойдет?</div>
                     <div class="card-mini">Чего НЕ будет, если произойдет?</div>
                     <div class="card-mini">Чего НЕ будет, если НЕ произойдет?</div>
                 </div>
-                <div class="example-quote">📌 Пример: замена вентиляторов (10 лет эксплуатации). Положительных последствий больше → решение целесообразно. Предотвращает импульсивность.</div>
+                <div class="example-quote">📌 Пример: замена вентиляторов (10 лет эксплуатации). Положительных последствий больше → решение целесообразно.</div>
             </div>
 
-            <!-- СЛАЙД 8 - Тетралемма (расширенный выбор) -->
+            <!-- 10. Тетралемма -->
             <div class="slide">
                 <div class="slide-title">🔄 Тетралемма</div>
-                <p><strong>Выход за рамки бинарного выбора «да/нет».</strong> Древнеиндийская логика + пятый вариант.</p>
+                <p>Выход за рамки бинарного выбора (да/нет). 4+1 вариант.</p>
                 <ul class="method-list">
                     <li><strong>А</strong> (остаться на работе)</li>
                     <li><strong>Б</strong> (уйти в бизнес)</li>
                     <li><strong>А и Б одновременно</strong> (гибрид)</li>
                     <li><strong>Ни А, ни Б</strong> (третья компания)</li>
-                    <li><strong>Пятый вариант</strong> — нечто совершенно иное (творческий отпуск, образование).</li>
+                    <li><strong>Пятый вариант</strong> — совершенно иное (творческий отпуск, обучение)</li>
                 </ul>
                 <div class="highlight-block">✨ Тетралемма раскрывает скрытые возможности, когда дилемма кажется неразрешимой.</div>
             </div>
 
-            <!-- СЛАЙД 9 - 5W1H (Киплинга) -->
+            <!-- 11. 5W1H / Киплинга -->
             <div class="slide">
-                <div class="slide-title">📋 5W1H / Метод Киплинга</div>
+                <div class="slide-title">📋 5W1H (Киплинга)</div>
                 <p>Шесть вопросов для полного описания проблемы, проекта или задачи.</p>
                 <div class="tag-group">
-                    <span class="tag">Who (кто?)</span>
-                    <span class="tag">What (что?)</span>
-                    <span class="tag">Where (где?)</span>
-                    <span class="tag">When (когда?)</span>
-                    <span class="tag">Why (почему?)</span>
-                    <span class="tag">How (как?)</span>
+                    <span class="tag">Who</span><span class="tag">What</span><span class="tag">Where</span>
+                    <span class="tag">When</span><span class="tag">Why</span><span class="tag">How</span>
                 </div>
                 <div class="example-quote">📌 Применение: управление проектами, журналистика, сегментация рынка. «Хорошо описанная проблема — наполовину решена».</div>
-                <div class="highlight-block">Структурирует мышление, помогает не упустить ни одного аспекта.</div>
+                <div class="highlight-block">Структурирует мышление, не даёт упустить аспекты.</div>
             </div>
 
-            <!-- СЛАЙД 10 - Многокритериальный метод (взвешенная сумма) -->
+            <!-- 12. Многокритериальный метод (WSM) -->
             <div class="slide">
                 <div class="slide-title">📊 Многокритериальный выбор (WSM)</div>
-                <p><strong>Взвешенная сумма критериев</strong> — рациональный выбор из нескольких альтернатив.</p>
+                <p>Взвешенная сумма критериев для выбора лучшей альтернативы.</p>
                 <ul class="method-list">
                     <li>1. Список критериев (без дублирования).</li>
                     <li>2. Вес каждого критерия (% значимости).</li>
                     <li>3. Оценка альтернатив в баллах (1–10).</li>
                     <li>4. Взвешенная сумма → выбор лучшей.</li>
                 </ul>
-                <div class="example-quote">📌 Пример: выбор офиса (стоимость, оснащённость, удалённость). Офис А набрал максимум — рекомендован к аренде.</div>
+                <div class="example-quote">📌 Пример: выбор офиса (стоимость, оснащённость, удалённость). Офис А набрал максимум.</div>
             </div>
 
-            <!-- СЛАЙД 11 - SWOT + Сценарный крест (два мощных инструмента) -->
+            <!-- 13. SWOT-анализ -->
             <div class="slide">
-                <div class="slide-title">🔎 SWOT и Сценарный крест</div>
-                <div class="flex-between" style="gap: 1rem; flex-wrap: wrap;">
-                    <div style="flex:1; min-width: 180px;">
-                        <strong>SWOT-анализ</strong>
-                        <ul class="method-list" style="margin-top: 0.5rem;">
-                            <li><strong>S</strong> – сильные стороны</li>
-                            <li><strong>W</strong> – слабые стороны</li>
-                            <li><strong>O</strong> – возможности среды</li>
-                            <li><strong>T</strong> – угрозы</li>
-                        </ul>
-                        <div class="tag">Для компании, проекта, личности</div>
-                    </div>
-                    <div style="flex:1; min-width: 180px;">
-                        <strong>Сценарный крест</strong>
-                        <ul class="method-list" style="margin-top: 0.5rem;">
-                            <li>Выберите 2 главные неопределённости</li>
-                            <li>Постройте 4 сценария</li>
-                            <li>Готовьтесь к каждому</li>
-                        </ul>
-                        <div class="tag">Пример: постковидные сценарии</div>
-                    </div>
+                <div class="slide-title">🔎 SWOT-анализ</div>
+                <div class="flex-between" style="gap:1rem;">
+                    <div><strong>S</strong> – сильные стороны<br><strong>W</strong> – слабые стороны</div>
+                    <div><strong>O</strong> – возможности среды<br><strong>T</strong> – угрозы</div>
                 </div>
-                <div class="highlight-block mt-2">🎯 SWOT даёт план действий, сценарный крест — устойчивость в условиях неопределённости.</div>
+                <div class="highlight-block">Важно: O и T — внешние явления, а не «я могу». Для компании, проекта или личности.</div>
+                <div class="example-quote">📌 Результат: конкретный план действий, учитывающий уникальные условия.</div>
             </div>
 
-            <!-- СЛАЙД 12 - 5 вопросов против когнитивных искажений -->
+            <!-- 14. Сценарный крест -->
             <div class="slide">
-                <div class="slide-title">🧩 Алгоритм против когнитивных ловушек</div>
-                <p>Пять вопросов, которые помогут избежать предвзятости и системных ошибок.</p>
-                <ol style="margin-left: 1.2rem; margin-top: 1rem; line-height: 1.6;">
-                    <li><strong>Какую важную информацию я ещё не рассмотрел?</strong> — ищите противоречащие данные.</li>
-                    <li><strong>В какой степени мне свойственна предвзятость?</strong> — оцените перекосы, частоту срывов сроков.</li>
-                    <li><strong>Что посоветовал бы объективный консультант?</strong> — посмотрите со стороны.</li>
-                    <li><strong>Устранены ли причины провала решения?</strong> — проверьте реализуемость.</li>
-                    <li><strong>Какая новая информация заставит пересмотреть решение?</strong> — определите триггеры разворота.</li>
+                <div class="slide-title">🌍 Сценарный крест</div>
+                <p>Выберите 2 главные неопределённости → получите 4 сценария будущего.</p>
+                <div class="tag-group"><span class="tag">Ось X: поведение</span><span class="tag">Ось Y: технология/среда</span></div>
+                <div class="example-quote">📌 Пример: постковидные сценарии (Цифровая свобода, Новая нормальность, Бесконечный 2020, Отделение интенсивной терапии).</div>
+                <div class="highlight-block">🎯 Готовьтесь к каждому сценарию — устойчивость в условиях неопределённости.</div>
+            </div>
+
+            <!-- 15. Диаграмма Исикавы («рыбий скелет») -->
+            <div class="slide">
+                <div class="slide-title">🐟 Диаграмма Исикавы</div>
+                <p>Причинно-следственная диаграмма для поиска корневых причин проблемы.</p>
+                <ul class="method-list">
+                    <li>Голова — проблема.</li>
+                    <li>Кости — категории (люди, машины, методы, материалы, измерения, среда).</li>
+                    <li>Мелкие кости — конкретные причины.</li>
+                </ul>
+                <div class="example-quote">🔧 Используется в управлении качеством, маркетинге, стратегии. Лучше строить группой.</div>
+            </div>
+
+            <!-- 16. Диаграммы «Почему-почему», «Как-как», «Зачем-зачем» -->
+            <div class="slide">
+                <div class="slide-title">🌳 Деревья причин и целей</div>
+                <p><strong>«Почему — почему»</strong>: древо причин (не линейно, а ветвями).<br>
+                <strong>«Как — как»</strong>: от корневой причины к конкретным мероприятиям.<br>
+                <strong>«Зачем — зачем»</strong>: пересмотр цели, если решение не устраивает.</p>
+                <div class="highlight-block">📌 Пример: низкие продажи → продукт не соответствует → улучшить качество, моду, удобство → детализировать до задач исполнителям.</div>
+            </div>
+
+            <!-- 17. Анализ стейкхолдеров -->
+            <div class="slide">
+                <div class="slide-title">🤝 Анализ стейкхолдеров</div>
+                <p>Матрица «интерес — влияние»: 4 группы.</p>
+                <div class="tag-group">
+                    <span class="tag">Случайные попутчики</span>
+                    <span class="tag">Любопытствующие</span>
+                    <span class="tag">Спящие чудовища</span>
+                    <span class="tag">Ключевые игроки</span>
+                </div>
+                <div class="example-quote">📌 Применение: не только в бизнесе, но и в семье, проектах, переговорах. План вовлечения для каждой группы.</div>
+                <div class="highlight-block">🎯 Завоевывайте доверие — стейкхолдеры с высоким влиянием могут стать помощниками.</div>
+            </div>
+
+            <!-- 18. CATWOE (мягкие системы) -->
+            <div class="slide">
+                <div class="slide-title">📌 CATWOE (SSM)</div>
+                <p>Методология мягких систем для сложных, неоднозначных проблем.</p>
+                <ul class="method-list">
+                    <li><strong>C</strong> – клиенты (кто получает результат)</li>
+                    <li><strong>A</strong> – акторы (кто выполняет)</li>
+                    <li><strong>T</strong> – трансформация (вход→выход)</li>
+                    <li><strong>W</strong> – мировоззрение (какая картина мира)</li>
+                    <li><strong>O</strong> – владелец (кто контролирует)</li>
+                    <li><strong>E</strong> – ограничения среды</li>
+                </ul>
+                <div class="example-quote">🎯 Помогает достичь консенсуса при множестве точек зрения.</div>
+            </div>
+
+            <!-- 19. Алгоритм против когнитивных искажений (5 вопросов) -->
+            <div class="slide">
+                <div class="slide-title">🧩 5 вопросов против когнитивных ловушек</div>
+                <ol style="margin-left: 1.2rem; line-height: 1.5;">
+                    <li>Какую важную информацию я ещё не рассмотрел?</li>
+                    <li>В какой степени мне свойственна предвзятость?</li>
+                    <li>Что посоветовал бы объективный консультант?</li>
+                    <li>Устранены ли причины провала решения?</li>
+                    <li>Какая новая информация заставит пересмотреть решение?</li>
                 </ol>
-                <div class="example-quote">💡 Применяйте перед каждым важным решением: от бизнес-стратегии до бытового выбора.</div>
+                <div class="highlight-block">💡 Применяйте перед каждым важным решением — от стратегии до бытового выбора.</div>
+            </div>
+
+            <!-- 20. Латеральное мышление (де Боно) -->
+            <div class="slide">
+                <div class="slide-title">🌀 Латеральное мышление</div>
+                <p>Нешаблонный подход: смещение фокуса, разрыв логической цепочки, установление новой связи.</p>
+                <div class="example-quote">✨ Пример: «цветок никогда не вянет» → искусственный цветок. Нарушение шаблона рождает инновацию.</div>
+                <div class="tag-group"><span class="tag">Выбрать фокус</span><span class="tag">Сместить (латеральный сдвиг)</span><span class="tag">Установить связь</span></div>
+                <div class="highlight-block">🎯 Используйте случайный предмет как стимул для генерации идей.</div>
+            </div>
+
+            <!-- 21. Стратегическая канва / Голубой океан -->
+            <div class="slide">
+                <div class="slide-title">🌊 Голубой океан (стратегическая канва)</div>
+                <p>Модель четырёх действий: <strong>Исключить — Сократить — Повысить — Создать</strong>.</p>
+                <div class="method-grid">
+                    <div class="card-mini">Исключить<br>устаревшие факторы</div>
+                    <div class="card-mini">Сократить<br>избыточное</div>
+                    <div class="card-mini">Повысить<br>ценность</div>
+                    <div class="card-mini">Создать<br>новое</div>
+                </div>
+                <div class="example-quote">📌 Пример Cirque du Soleil: отказался от животных и звёзд, добавил театральность и музыку → новая рыночная ниша.</div>
+            </div>
+
+            <!-- 22. Главный рецепт: три шага -->
+            <div class="slide">
+                <div class="slide-title">💊 Главный рецепт реабилитации</div>
+                <div class="highlight-block" style="background:#EFF7FA;">
+                    <strong>ДУМАТЬ → потом делать</strong><br>
+                    Три универсальных шага:
+                </div>
+                <ol style="margin-left: 1.2rem; margin-top: 1rem; font-weight: 500;">
+                    <li><strong>Отложите</strong> решение настолько, насколько возможно.</li>
+                    <li><strong>Оглянитесь</strong> — соберите релевантные и достоверные факты.</li>
+                    <li><strong>Рассмотрите альтернативы</strong> — решение это выбор варианта.</li>
+                </ol>
+                <div class="example-quote">🧠 «Когнитивные искажения неизбежны. Нивелировать их можно только дисциплинированным мышлением. Тренируйте ум как мышцу».</div>
+                <div class="tag-group mt-2"><span class="tag">Анализируй</span><span class="tag">Сомневайся</span><span class="tag">Применяй алгоритмы</span></div>
             </div>
         </div>
     </div>
@@ -454,7 +564,7 @@
         <div class="dots" id="dotsContainer"></div>
         <button class="nav-btn" id="nextSlideBtn">Вперёд →</button>
     </div>
-    <footer>Деловая презентация | Инструменты стратегического мышления и принятия решений</footer>
+    <footer>Стратегическое мышление | 22 инструмента для принятия решений</footer>
 </div>
 
 <script>
@@ -469,7 +579,6 @@
     function updateSlider() {
         const width = track.parentElement.clientWidth;
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        // обновить активные точки
         const dots = document.querySelectorAll('.dot');
         dots.forEach((dot, idx) => {
             if (idx === currentIndex) dot.classList.add('active');
@@ -492,40 +601,29 @@
     }
 
     function nextSlide() {
-        if (currentIndex < totalSlides - 1) {
-            currentIndex++;
-            updateSlider();
-        } else {
-            // loop to first optional: можно зациклить
-            // currentIndex = 0; updateSlider(); (если нужно раскомментировать)
-        }
+        if (currentIndex < totalSlides - 1) currentIndex++;
+        else currentIndex = 0; // цикл
+        updateSlider();
     }
 
     function prevSlide() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlider();
-        } else {
-            // currentIndex = totalSlides-1; (cyclic)
-        }
+        if (currentIndex > 0) currentIndex--;
+        else currentIndex = totalSlides - 1;
+        updateSlider();
     }
 
     prevBtn.addEventListener('click', prevSlide);
     nextBtn.addEventListener('click', nextSlide);
     window.addEventListener('resize', () => updateSlider());
 
-    // touch support for swipe
+    // touch swipe
     let touchStartX = 0;
-    let touchEndX = 0;
-    track.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
+    track.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
     track.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
+        const touchEndX = e.changedTouches[0].screenX;
         if (touchEndX < touchStartX - 40) nextSlide();
         if (touchEndX > touchStartX + 40) prevSlide();
     });
-    // клавиши ← →
     window.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') prevSlide();
         if (e.key === 'ArrowRight') nextSlide();
