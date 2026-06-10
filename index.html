@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Как быть умнее — инструменты стратегического мышления</title>
+    <style>
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f4f7fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #1A2C3E;
+            padding: 0;
+            margin: 0;
+        }
+        /* основной контейнер — как ширина письма */
+        .email-container {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .content-padding {
+            padding: 30px 24px 40px;
+        }
+        /* градиентный заголовок с прозрачностью текста (clip) */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(135deg, #0B2B40 0%, #123e54 100%);
+            border-radius: 0 0 32px 32px;
+            margin-bottom: 10px;
+        }
+        .hero-title {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(120deg, #FFFFFF, #B6E2F5);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+        }
+        .hero-sub {
+            font-size: 18px;
+            color: #CFE9F5;
+            font-weight: 400;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            display: inline-block;
+            padding-top: 12px;
+        }
+        /* разделы */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            padding-left: 8px;
+            border-left: 5px solid #F39C12;
+            color: #1A2C3E;
+        }
+        .section-sub {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 30px 0 15px 0;
+            color: #1E4663;
+        }
+        /* Карточки навыков (сетка) */
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            margin: 30px 0 20px;
+        }
+        .skill-card {
+            flex: 1 1 calc(33.33% - 22px);
+            min-width: 160px;
+            background: #FFFFFF;
+            border-radius: 24px;
+            padding: 20px 16px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            border: 1px solid #EFF3F8;
+            text-align: center;
+        }
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+            border-color: #F39C12;
+        }
+        .skill-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .skill-name {
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #1F3A4B;
+        }
+        .skill-desc {
+            font-size: 14px;
+            color: #527a9b;
+            line-height: 1.4;
+        }
+        /* сетка тегов (инструменты) */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0 20px;
+        }
+        .tag {
+            background: #EFF3F8;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #1C4966;
+            transition: all 0.2s;
+            border: 1px solid #DAE3EC;
+        }
+        .tag:hover {
+            background: #F39C12;
+            color: white;
+            border-color: #F39C12;
+            transform: scale(1.02);
+        }
+        /* акцентные блоки для кейсов */
+        .case-block {
+            background: #FDF9F0;
+            border-left: 6px solid #F39C12;
+            border-radius: 20px;
+            padding: 20px 24px;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .case-title {
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #C57F1A;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .case-title:before {
+            content: "📌";
+            font-size: 20px;
+        }
+        .case-text {
+            color: #2C3E4E;
+            font-size: 15px;
+        }
+        .highlight-quote {
+            background: #0B2B40;
+            color: white;
+            padding: 28px 24px;
+            border-radius: 28px;
+            margin: 35px 0 20px;
+            text-align: center;
+        }
+        .quote-text {
+            font-size: 20px;
+            font-weight: 500;
+            font-style: normal;
+            line-height: 1.4;
+        }
+        .quote-author {
+            margin-top: 16px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        .grid-2col {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin: 20px 0;
+        }
+        .col {
+            flex: 1;
+            min-width: 220px;
+        }
+        .method-list {
+            list-style: none;
+            padding: 0;
+        }
+        .method-list li {
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+        }
+        .method-list li:before {
+            content: "▹";
+            color: #F39C12;
+            position: absolute;
+            left: 0;
+        }
+        hr {
+            margin: 30px 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #E0E9F2, #F39C12, #E0E9F2);
+        }
+        @media (max-width: 600px) {
+            .content-padding {
+                padding: 20px 16px 30px;
+            }
+            .hero-title {
+                font-size: 32px;
+            }
+            .section-title {
+                font-size: 24px;
+            }
+            .skill-card {
+                flex: 1 1 100%;
+            }
+            .cards-grid {
+                flex-direction: column;
+            }
+            .grid-2col {
+                flex-direction: column;
+            }
+            .tag {
+                font-size: 13px;
+                padding: 6px 16px;
+            }
+        }
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #8098ab;
+            padding: 24px;
+            border-top: 1px solid #EAF0F5;
+            background-color: #F9FBFD;
+        }
+        .button-like {
+            display: inline-block;
+            background: #F39C12;
+            color: #1A2C3E;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            margin-top: 12px;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Контейнер для почтовой совместимости (ширина фиксирована) -->
+    <center style="background-color: #f4f7fc; width:100%; table-layout: fixed;">
+        <div style="max-width: 680px; margin:0 auto; background-color:#ffffff; text-align:left;">
+            <!-- Header hero -->
+            <div class="hero">
+                <div class="hero-title">Как быть умнее</div>
+                <div class="hero-sub">Рецепт реабилитации интеллектуальных инвалидов<br>по книге Алексея Мурзинова</div>
+            </div>
+            <div class="content-padding">
+                <!-- Проблема -->
+                <p style="font-size: 17px; margin-bottom: 16px;">⚡ <strong>Проблема:</strong> большинство живёт по шаблону, не используя потенциал мозга. <em>«Интеллектуальные инвалиды де-факто»</em> — формально здоровы, но не анализируют, не ставят под сомнение, действуют на автопилоте.</p>
+                <p style="color:#4A6F8A;">🎯 <strong>Цель книги</strong> — пропаганда мышления и внедрение инструментов, чтобы думать системно, критически и творчески.</p>
+
+                <!-- Виды мышления / карточки навыков -->
+                <div class="section-title">🧠 Виды мышления, которые меняют всё</div>
+                <div class="cards-grid">
+                    <div class="skill-card"><div class="skill-icon">🔍</div><div class="skill-name">Критическое</div><div class="skill-desc">Факты vs мнения, здоровый пессимизм, отделение правды от вымысла.</div></div>
+                    <div class="skill-card"><div class="skill-icon">⚙️</div><div class="skill-name">Логическое</div><div class="skill-desc">Причинно-следственные связи, законы тождества и достаточного основания.</div></div>
+                    <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">Системное</div><div class="skill-desc">Эмерджентность, связи элементов, динамика и целостное видение.</div></div>
+                    <div class="skill-card"><div class="skill-icon">💡</div><div class="skill-name">Творческое</div><div class="skill-desc">Инкубация, озарение, амбициозные цели (3 в 1 + X).</div></div>
+                    <div class="skill-card"><div class="skill-icon">👥</div><div class="skill-name">Групповое</div><div class="skill-desc">Адвокат дьявола, 6 шляп, мозговой штурм, совещания по Адизесу.</div></div>
+                    <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">Визуальное</div><div class="skill-desc">Скетчноутинг, диаграммы, карты идей — увидеть неочевидное.</div></div>
+                </div>
+
+                <!-- Цитата об объединении интуиции и логики -->
+                <div class="highlight-quote">
+                    <div class="quote-text">«Дайте свободу своей интуиции, но прежде накормите её фактами»</div>
+                    <div class="quote-author">— Алексей Мурзинов / Д. Канеман</div>
+                </div>
+
+                <!-- Сетка инструментов (теги) -->
+                <div class="section-title">🛠️ Инструменты и алгоритмы мышления</div>
+                <div class="tags-container">
+                    <span class="tag">5W1H (Киплинга)</span>
+                    <span class="tag">Квадрат Декарта</span>
+                    <span class="tag">Тетралемма</span>
+                    <span class="tag">Диаграмма Исикавы</span>
+                    <span class="tag">SWOT-анализ</span>
+                    <span class="tag">Сценарный крест</span>
+                    <span class="tag">«Почему – почему»</span>
+                    <span class="tag">«Как – как»</span>
+                    <span class="tag">Многокритериальный WSM</span>
+                    <span class="tag">Мозговой штурм</span>
+                    <span class="tag">6 шляп де Боно</span>
+                    <span class="tag">PDCA / Деминга</span>
+                    <span class="tag">Анализ стейкхолдеров</span>
+                    <span class="tag">CATWOE (SSM)</span>
+                </div>
+
+                <!-- Блок кейсов (примеры из книги) -->
+                <div class="section-title">📌 Практические кейсы</div>
+                <div class="case-block">
+                    <div class="case-title">Выбор офиса — многокритериальный метод</div>
+                    <div class="case-text">Критерии: стоимость аренды (вес 30%), оснащённость (30%), удалённость от клиентов (15%), частота платежей, этаж, возможность наружной рекламы. Взвешенная сумма баллов → <strong>Офис А набрал 842 балла</strong> — лучший вариант. Простая арифметика, но спасёт от импульсивных решений.</div>
+                </div>
+                <div class="case-block">
+                    <div class="case-title">Квадрат Декарта: замена вентиляторов (пример И.И. Демичева)</div>
+                    <div class="case-text">4 вопроса: «Что будет, если заменим? / если не заменим? Чего не будет?» — положительные последствия перевесили: решение целесообразно. Метод заставляет увидеть все 4 стороны, а не только «хочу поменять».</div>
+                </div>
+                <div class="case-block">
+                    <div class="case-title">Тетралемма: уйти с работы или остаться?</div>
+                    <div class="case-text">Вместо «А или Б» рассматриваем: А и Б одновременно (гибрид), ни А ни Б (другая компания), и пятый вариант — творческий отпуск. Расширяет пространство решений.</div>
+                </div>
+
+                <!-- Алгоритм преодоления когнитивных искажений -->
+                <div class="section-title">🧩 5 вопросов против когнитивных ловушек</div>
+                <div class="grid-2col">
+                    <div class="col">
+                        <ul class="method-list">
+                            <li><strong>1. Какую важную информацию я ещё не учёл?</strong> — не цепляйтесь за первое решение.</li>
+                            <li><strong>2. В какой степени мне свойственна предвзятость?</strong> — оцените перекосы.</li>
+                            <li><strong>3. Что посоветовал бы объективный консультант?</strong> — дистанцируйтесь.</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul class="method-list">
+                            <li><strong>4. Устранены ли причины провала решения?</strong> — проработайте реализацию.</li>
+                            <li><strong>5. Какая информация заставит пересмотреть решение?</strong> — определите триггеры разворота.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Методология 5W1H -->
+                <div class="section-sub">📋 Метод Киплинга (5W1H) — структурирование проблемы</div>
+                <div class="tags-container" style="margin-top: 0;">
+                    <span class="tag">Who (кто?)</span>
+                    <span class="tag">What (что?)</span>
+                    <span class="tag">Where (где?)</span>
+                    <span class="tag">When (когда?)</span>
+                    <span class="tag">Why (почему?)</span>
+                    <span class="tag">How (как?)</span>
+                </div>
+                <p style="font-size: 15px; margin: 10px 0 20px;">Отвечая на эти 6 вопросов, вы получаете полную картину проекта, новости или бизнес-задачи. <em>«Хорошо описанная проблема — наполовину решена»</em>.</p>
+
+                <!-- стратегическая канва + SWOT -->
+                <div class="section-sub">⚡ Ситуационный анализ: SWOT, сценарный крест</div>
+                <div class="grid-2col">
+                    <div class="col">
+                        <div style="background: #F1F6FA; border-radius: 20px; padding: 18px;">
+                            <div style="font-weight: 700; margin-bottom: 8px;">✅ SWOT-анализ личности и проектов</div>
+                            <div>Сильные стороны (S) + Слабые (W) + Возможности (O) + Угрозы (T). <br>Важно: O и T — внешние явления, а не «я могу».</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div style="background: #F1F6FA; border-radius: 20px; padding: 18px;">
+                            <div style="font-weight: 700; margin-bottom: 8px;">🌍 Сценарный крест</div>
+                            <div>Выберите 2 главные неопределённости → получите 4 сценария. Готовьтесь к любому из них (пример: постковидная «новая нормальность»).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Главный рецепт -->
+                <div class="section-title">💊 Главный рецепт реабилитации</div>
+                <div style="background: #EFF3F8; border-radius: 28px; padding: 24px; margin: 15px 0;">
+                    <div style="font-size: 22px; font-weight: 800; margin-bottom: 12px;">ДУМАТЬ → потом делать</div>
+                    <p style="margin-bottom: 12px;">Три шага перед любым решением:</p>
+                    <ol style="margin-left: 20px; color: #1F3A4B;">
+                        <li><strong>Отложите</strong> решение настолько, насколько возможно.</li>
+                        <li><strong>Оглянитесь</strong> — соберите релевантные и достоверные факты.</li>
+                        <li><strong>Рассмотрите варианты</strong> — решение это выбор альтернативы.</li>
+                    </ol>
+                    <p style="margin-top: 12px; font-style: italic;">«Когнитивные искажения неизбежны, но дисциплинированное мышление снижает их до нуля».</p>
+                </div>
+
+                <hr>
+                <div style="text-align: center; margin: 20px 0;">
+                    <span style="background: #F39C12; padding: 8px 20px; border-radius: 40px; font-weight: 600; font-size: 14px; color: #1A2C3E;">🎯 Интеллектуальная гигиена — ежедневная тренировка ума</span>
+                </div>
+                <p style="text-align: center; font-size: 15px;">По материалам книги <strong>«Как быть умнее: Рецепт реабилитации интеллектуальных инвалидов»</strong> (Алексей Мурзинов, 2025). Применяйте алгоритмы, задавайте правильные вопросы и развивайте системное мышление каждый день.</p>
+            </div>
+            <div class="footer">
+                © Образовательный материал для стратегического управления | Мурзинов А.В. — Как быть умнее<br>
+                *Презентация адаптирована для почтовых клиентов — все ключевые методы и кейсы собраны для быстрого внедрения.
+            </div>
+        </div>
+    </center>
+</body>
+</html>
