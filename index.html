@@ -2,347 +2,386 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta name="x-apple-disable-message-reformatting">
-    <title>Как быть умнее — инструменты стратегического мышления</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Стратегическое мышление | Презентация методов</title>
     <style>
-        /* RESET & BASE */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            background-color: #f4f7fc;
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            line-height: 1.5;
-            color: #1A2C3E;
-            padding: 0;
-            margin: 0;
+            background: #EFF2F7;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
         }
-        /* основной контейнер — как ширина письма */
-        .email-container {
-            max-width: 680px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+        /* основной контейнер презентации */
+        .presentation-container {
+            max-width: 1100px;
+            width: 100%;
+            background: #FFFFFF;
+            border-radius: 32px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
         }
-        .content-padding {
-            padding: 30px 24px 40px;
+
+        /* слайдер */
+        .slides-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #FFFFFF;
         }
-        /* градиентный заголовок с прозрачностью текста (clip) */
-        .hero {
-            text-align: center;
-            padding: 40px 20px 30px;
-            background: linear-gradient(135deg, #0B2B40 0%, #123e54 100%);
-            border-radius: 0 0 32px 32px;
-            margin-bottom: 10px;
+
+        .slides-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            will-change: transform;
         }
-        .hero-title {
-            font-size: 44px;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            background: linear-gradient(120deg, #FFFFFF, #B6E2F5);
+
+        .slide {
+            flex: 0 0 100%;
+            padding: 2rem 2.5rem 3rem;
+            background: #FFFFFF;
+        }
+
+        /* типографика и деловой стиль */
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.2rem;
+            color: #1E2F3E;
+            border-left: 5px solid #2C7DA0;
+            padding-left: 1.2rem;
+        }
+
+        .gradient-title {
+            background: linear-gradient(135deg, #1E2F3E, #2C7DA0, #1E5F7A);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 12px;
-        }
-        .hero-sub {
-            font-size: 18px;
-            color: #CFE9F5;
-            font-weight: 400;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            display: inline-block;
-            padding-top: 12px;
-        }
-        /* разделы */
-        .section-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 40px 0 20px 0;
-            padding-left: 8px;
-            border-left: 5px solid #F39C12;
-            color: #1A2C3E;
-        }
-        .section-sub {
-            font-size: 20px;
-            font-weight: 600;
-            margin: 30px 0 15px 0;
-            color: #1E4663;
-        }
-        /* Карточки навыков (сетка) */
-        .cards-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 22px;
-            margin: 30px 0 20px;
-        }
-        .skill-card {
-            flex: 1 1 calc(33.33% - 22px);
-            min-width: 160px;
-            background: #FFFFFF;
-            border-radius: 24px;
-            padding: 20px 16px;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
-            transition: transform 0.25s ease, box-shadow 0.3s ease;
-            border: 1px solid #EFF3F8;
-            text-align: center;
-        }
-        .skill-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
-            border-color: #F39C12;
-        }
-        .skill-icon {
-            font-size: 36px;
-            margin-bottom: 12px;
-            display: inline-block;
-        }
-        .skill-name {
-            font-weight: 700;
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: #1F3A4B;
-        }
-        .skill-desc {
-            font-size: 14px;
-            color: #527a9b;
-            line-height: 1.4;
-        }
-        /* сетка тегов (инструменты) */
-        .tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 20px 0 20px;
-        }
-        .tag {
-            background: #EFF3F8;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 500;
-            color: #1C4966;
-            transition: all 0.2s;
-            border: 1px solid #DAE3EC;
-        }
-        .tag:hover {
-            background: #F39C12;
-            color: white;
-            border-color: #F39C12;
-            transform: scale(1.02);
-        }
-        /* акцентные блоки для кейсов */
-        .case-block {
-            background: #FDF9F0;
-            border-left: 6px solid #F39C12;
-            border-radius: 20px;
-            padding: 20px 24px;
-            margin: 25px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        }
-        .case-title {
+            font-size: 2.8rem;
             font-weight: 800;
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: #C57F1A;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            border-left: none;
+            padding-left: 0;
+            margin-bottom: 0.8rem;
         }
-        .case-title:before {
-            content: "📌";
-            font-size: 20px;
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #4A627A;
+            border-top: 1px solid #E2E8F0;
+            display: inline-block;
+            padding-top: 0.5rem;
         }
-        .case-text {
-            color: #2C3E4E;
-            font-size: 15px;
-        }
-        .highlight-quote {
-            background: #0B2B40;
-            color: white;
-            padding: 28px 24px;
-            border-radius: 28px;
-            margin: 35px 0 20px;
-            text-align: center;
-        }
-        .quote-text {
-            font-size: 20px;
-            font-weight: 500;
-            font-style: normal;
-            line-height: 1.4;
-        }
-        .quote-author {
-            margin-top: 16px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-        .grid-2col {
+
+        .method-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 24px;
-            margin: 20px 0;
+            gap: 1.5rem;
+            margin: 1.8rem 0 1rem;
         }
-        .col {
-            flex: 1;
-            min-width: 220px;
+
+        .card-mini {
+            background: #F8FAFE;
+            border-radius: 20px;
+            padding: 1.2rem;
+            flex: 1 1 200px;
+            transition: all 0.2s;
+            border: 1px solid #E9EDF2;
         }
-        .method-list {
+
+        .card-mini:hover {
+            border-color: #2C7DA0;
+            background: #FFFFFF;
+            box-shadow: 0 8px 18px rgba(44,125,160,0.08);
+        }
+
+        .card-mini strong {
+            color: #2C7DA0;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .law-list, .method-list {
             list-style: none;
-            padding: 0;
+            margin: 1rem 0 0 0;
         }
-        .method-list li {
-            margin-bottom: 12px;
-            padding-left: 24px;
+        .law-list li, .method-list li {
+            margin-bottom: 0.6rem;
+            padding-left: 1.5rem;
             position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
         }
-        .method-list li:before {
-            content: "▹";
-            color: #F39C12;
+        .law-list li::before, .method-list li::before {
+            content: "—";
+            color: #2C7DA0;
             position: absolute;
             left: 0;
-        }
-        hr {
-            margin: 30px 0;
-            border: none;
-            height: 2px;
-            background: linear-gradient(90deg, #E0E9F2, #F39C12, #E0E9F2);
-        }
-        @media (max-width: 600px) {
-            .content-padding {
-                padding: 20px 16px 30px;
-            }
-            .hero-title {
-                font-size: 32px;
-            }
-            .section-title {
-                font-size: 24px;
-            }
-            .skill-card {
-                flex: 1 1 100%;
-            }
-            .cards-grid {
-                flex-direction: column;
-            }
-            .grid-2col {
-                flex-direction: column;
-            }
-            .tag {
-                font-size: 13px;
-                padding: 6px 16px;
-            }
-        }
-        .footer {
-            text-align: center;
-            font-size: 13px;
-            color: #8098ab;
-            padding: 24px;
-            border-top: 1px solid #EAF0F5;
-            background-color: #F9FBFD;
-        }
-        .button-like {
-            display: inline-block;
-            background: #F39C12;
-            color: #1A2C3E;
             font-weight: 600;
-            padding: 12px 24px;
-            border-radius: 40px;
-            text-decoration: none;
-            margin-top: 12px;
         }
-        a {
-            text-decoration: none;
+
+        .highlight-block {
+            background: #F1F6F9;
+            border-radius: 20px;
+            padding: 1.3rem 1.6rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #2C7DA0;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1rem 0;
+        }
+        .tag {
+            background: #EEF2F7;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1F4E6E;
+        }
+
+        .example-quote {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            border: 1px solid #E4EAF1;
+            margin-top: 1.2rem;
+        }
+
+        /* навигация */
+        .nav-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem 1.5rem;
+            background: #FFFFFF;
+            border-top: 1px solid #EFF2F7;
+        }
+
+        .nav-btn {
+            background: #FFFFFF;
+            border: 1px solid #CBD5E1;
+            padding: 0.6rem 1.3rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1E2F3E;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn:hover {
+            background: #2C7DA0;
+            border-color: #2C7DA0;
+            color: white;
+        }
+
+        .dots {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #CBD5E1;
+            border-radius: 50%;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: #2C7DA0;
+            width: 24px;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 700px) {
+            .slide {
+                padding: 1.5rem 1.2rem 2rem;
+            }
+            .slide-title {
+                font-size: 1.6rem;
+            }
+            .gradient-title {
+                font-size: 2rem;
+            }
+            .nav-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+        footer {
+            font-size: 0.7rem;
+            text-align: center;
+            padding: 0.8rem;
+            color: #7B8BA0;
+            background: #FFFFFF;
+            border-top: 1px solid #EFF2F7;
+        }
+        button {
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .mt-2 {
+            margin-top: 1rem;
         }
     </style>
 </head>
 <body>
-    <!-- Контейнер для почтовой совместимости (ширина фиксирована) -->
-    <center style="background-color: #f4f7fc; width:100%; table-layout: fixed;">
-        <div style="max-width: 680px; margin:0 auto; background-color:#ffffff; text-align:left;">
-            <!-- Header hero -->
-            <div class="hero">
-                <div class="hero-title">Как быть умнее</div>
-                <div class="hero-sub">Рецепт реабилитации интеллектуальных инвалидов<br>по книге Алексея Мурзинова</div>
+<div class="presentation-container">
+    <div class="slides-wrapper">
+        <div class="slides-track" id="slidesTrack">
+            <!-- СЛАЙД 1 - титульный градиент -->
+            <div class="slide">
+                <div class="gradient-title">Стратегическое мышление<br>и принятие решений</div>
+                <div class="subhead">Инструменты, алгоритмы и методы<br>для интеллектуальной эффективности</div>
+                <div class="method-grid" style="margin-top: 2.5rem;">
+                    <div class="card-mini"><strong>20+</strong><br>методов и техник</div>
+                    <div class="card-mini"><strong>Системный подход</strong><br>От критики до сценариев</div>
+                    <div class="card-mini"><strong>Практические кейсы</strong><br>Решения высокого качества</div>
+                </div>
+                <div class="highlight-block" style="background:#F8FBFE;">
+                    🎯 <strong>Главный принцип</strong> — отложить решение, собрать факты, рассмотреть альтернативы. Мышление тренируется как навык.
+                </div>
             </div>
-            <div class="content-padding">
-                <!-- Проблема -->
-                <p style="font-size: 17px; margin-bottom: 16px;">⚡ <strong>Проблема:</strong> большинство живёт по шаблону, не используя потенциал мозга. <em>«Интеллектуальные инвалиды де-факто»</em> — формально здоровы, но не анализируют, не ставят под сомнение, действуют на автопилоте.</p>
-                <p style="color:#4A6F8A;">🎯 <strong>Цель книги</strong> — пропаганда мышления и внедрение инструментов, чтобы думать системно, критически и творчески.</p>
 
-                <!-- Виды мышления / карточки навыков -->
-                <div class="section-title">🧠 Виды мышления, которые меняют всё</div>
-                <div class="cards-grid">
-                    <div class="skill-card"><div class="skill-icon">🔍</div><div class="skill-name">Критическое</div><div class="skill-desc">Факты vs мнения, здоровый пессимизм, отделение правды от вымысла.</div></div>
-                    <div class="skill-card"><div class="skill-icon">⚙️</div><div class="skill-name">Логическое</div><div class="skill-desc">Причинно-следственные связи, законы тождества и достаточного основания.</div></div>
-                    <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">Системное</div><div class="skill-desc">Эмерджентность, связи элементов, динамика и целостное видение.</div></div>
-                    <div class="skill-card"><div class="skill-icon">💡</div><div class="skill-name">Творческое</div><div class="skill-desc">Инкубация, озарение, амбициозные цели (3 в 1 + X).</div></div>
-                    <div class="skill-card"><div class="skill-icon">👥</div><div class="skill-name">Групповое</div><div class="skill-desc">Адвокат дьявола, 6 шляп, мозговой штурм, совещания по Адизесу.</div></div>
-                    <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">Визуальное</div><div class="skill-desc">Скетчноутинг, диаграммы, карты идей — увидеть неочевидное.</div></div>
+            <!-- СЛАЙД 2 - Критическое мышление -->
+            <div class="slide">
+                <div class="slide-title">🔍 Критическое мышление</div>
+                <p><strong>Здоровый пессимизм и отделение фактов от мнений.</strong> Основа — двойная петля обучения.</p>
+                <div class="highlight-block">
+                    <strong>«Богу верим, от остальных требуются данные»</strong><br>
+                    Не принимайте на веру — требуйте доказательств.
                 </div>
+                <ul class="method-list">
+                    <li>Одинарная петля: исправляем ошибку, не меняя подход.</li>
+                    <li><strong>Двойная петля:</strong> анализируем предпосылки, цели, ценности.</li>
+                    <li>Рефлексия: «Что сделано? → результат? → почему? → урок?»</li>
+                </ul>
+                <div class="example-quote">📌 Кейс: вместо немедленного решения — задайте 5 «почему», чтобы найти корень.</div>
+            </div>
 
-                <!-- Цитата об объединении интуиции и логики -->
-                <div class="highlight-quote">
-                    <div class="quote-text">«Дайте свободу своей интуиции, но прежде накормите её фактами»</div>
-                    <div class="quote-author">— Алексей Мурзинов / Д. Канеман</div>
+            <!-- СЛАЙД 3 - Логическое мышление (законы логики) -->
+            <div class="slide">
+                <div class="slide-title">⚙️ Логическое мышление</div>
+                <p><strong>Анатомия мышления: причинно-следственные связи, законы логики.</strong></p>
+                <div class="tag-group">
+                    <span class="tag">Тождества</span>
+                    <span class="tag">Непротиворечия</span>
+                    <span class="tag">Исключённого третьего</span>
+                    <span class="tag">Достаточного основания</span>
                 </div>
+                <ul class="method-list">
+                    <li>Не подменяйте понятия (я про Фому, он про Ерёму).</li>
+                    <li>Не допускайте противоречий в суждениях.</li>
+                    <li>Каждое утверждение должно быть обосновано.</li>
+                </ul>
+                <div class="example-quote">💡 «Если логика не в чести — ни один довод не будет услышан». Построение древовидных диаграмм причин.</div>
+            </div>
 
-                <!-- Сетка инструментов (теги) -->
-                <div class="section-title">🛠️ Инструменты и алгоритмы мышления</div>
-                <div class="tags-container">
-                    <span class="tag">5W1H (Киплинга)</span>
-                    <span class="tag">Квадрат Декарта</span>
-                    <span class="tag">Тетралемма</span>
-                    <span class="tag">Диаграмма Исикавы</span>
-                    <span class="tag">SWOT-анализ</span>
-                    <span class="tag">Сценарный крест</span>
-                    <span class="tag">«Почему – почему»</span>
-                    <span class="tag">«Как – как»</span>
-                    <span class="tag">Многокритериальный WSM</span>
+            <!-- СЛАЙД 4 - Системное мышление -->
+            <div class="slide">
+                <div class="slide-title">🌐 Системное мышление</div>
+                <p><strong>Эмерджентность</strong> — целое больше суммы частей. Система состоит из элементов, связанных и динамичных.</p>
+                <div class="highlight-block">
+                    <strong>Три правила:</strong><br>
+                    1. Объект как система элементов.<br>
+                    2. Процессы в динамике (куда шайба будет).<br>
+                    3. Взаимодействие элементов и внешней среды.
+                </div>
+                <div class="flex-between mt-2">
+                    <span class="tag">Цикл PDCA</span>
+                    <span class="tag">Единый ритм задач</span>
+                    <span class="tag">Спиннер-устойчивость</span>
+                </div>
+                <div class="example-quote">📈 Пример: изменение в одном отделе влияет на всю компанию. Всегда анализируйте системные последствия.</div>
+            </div>
+
+            <!-- СЛАЙД 5 - Творческое мышление (модель Уолласа + амбициозные цели) -->
+            <div class="slide">
+                <div class="slide-title">💡 Творческое мышление</div>
+                <p><strong>Творческий процесс доступен каждому.</strong> 4 стадии: подготовка → инкубация → озарение → проверка.</p>
+                <div class="method-grid">
+                    <div class="card-mini"><strong>Амбициозные цели</strong><br>«Невозможная» задача стимулирует прорыв</div>
+                    <div class="card-mini"><strong>Быстро+качественно+недорого+X</strong><br>Новое измерение ценности</div>
+                </div>
+                <div class="example-quote">✨ Кейс: «сделать отметку на потолке» — решение нашлось через нестандартный инструмент (стул + человек).</div>
+            </div>
+
+            <!-- СЛАЙД 6 - Групповое мышление: 6 шляп и адвокат дьявола -->
+            <div class="slide">
+                <div class="slide-title">👥 Групповое мышление</div>
+                <p>Структурированные методы, избегая «групповщины».</p>
+                <div class="tag-group">
+                    <span class="tag">Шесть шляп де Боно</span>
+                    <span class="tag">Адвокат дьявола</span>
                     <span class="tag">Мозговой штурм</span>
-                    <span class="tag">6 шляп де Боно</span>
-                    <span class="tag">PDCA / Деминга</span>
-                    <span class="tag">Анализ стейкхолдеров</span>
-                    <span class="tag">CATWOE (SSM)</span>
+                    <span class="tag">Совещания по Адизесу</span>
                 </div>
+                <ul class="method-list">
+                    <li>Белая (факты), Красная (эмоции), Черная (критика), Желтая (позитив), Зеленая (креатив), Синяя (управление).</li>
+                    <li>Назначьте критика, который оспаривает идеи — повышает качество решений.</li>
+                </ul>
+                <div class="highlight-block">🎯 Результат: полный учёт альтернатив, отсутствие доминирования одного лица.</div>
+            </div>
 
-                <!-- Блок кейсов (примеры из книги) -->
-                <div class="section-title">📌 Практические кейсы</div>
-                <div class="case-block">
-                    <div class="case-title">Выбор офиса — многокритериальный метод</div>
-                    <div class="case-text">Критерии: стоимость аренды (вес 30%), оснащённость (30%), удалённость от клиентов (15%), частота платежей, этаж, возможность наружной рекламы. Взвешенная сумма баллов → <strong>Офис А набрал 842 балла</strong> — лучший вариант. Простая арифметика, но спасёт от импульсивных решений.</div>
+            <!-- СЛАЙД 7 - Квадрат Декарта -->
+            <div class="slide">
+                <div class="slide-title">📐 Квадрат Декарта</div>
+                <p><strong>Четыре вопроса для всестороннего анализа решения.</strong></p>
+                <div class="method-grid" style="gap: 1rem;">
+                    <div class="card-mini">Что будет, если это произойдет?</div>
+                    <div class="card-mini">Что будет, если это НЕ произойдет?</div>
+                    <div class="card-mini">Чего НЕ будет, если произойдет?</div>
+                    <div class="card-mini">Чего НЕ будет, если НЕ произойдет?</div>
                 </div>
-                <div class="case-block">
-                    <div class="case-title">Квадрат Декарта: замена вентиляторов (пример И.И. Демичева)</div>
-                    <div class="case-text">4 вопроса: «Что будет, если заменим? / если не заменим? Чего не будет?» — положительные последствия перевесили: решение целесообразно. Метод заставляет увидеть все 4 стороны, а не только «хочу поменять».</div>
-                </div>
-                <div class="case-block">
-                    <div class="case-title">Тетралемма: уйти с работы или остаться?</div>
-                    <div class="case-text">Вместо «А или Б» рассматриваем: А и Б одновременно (гибрид), ни А ни Б (другая компания), и пятый вариант — творческий отпуск. Расширяет пространство решений.</div>
-                </div>
+                <div class="example-quote">📌 Пример: замена вентиляторов (10 лет эксплуатации). Положительных последствий больше → решение целесообразно. Предотвращает импульсивность.</div>
+            </div>
 
-                <!-- Алгоритм преодоления когнитивных искажений -->
-                <div class="section-title">🧩 5 вопросов против когнитивных ловушек</div>
-                <div class="grid-2col">
-                    <div class="col">
-                        <ul class="method-list">
-                            <li><strong>1. Какую важную информацию я ещё не учёл?</strong> — не цепляйтесь за первое решение.</li>
-                            <li><strong>2. В какой степени мне свойственна предвзятость?</strong> — оцените перекосы.</li>
-                            <li><strong>3. Что посоветовал бы объективный консультант?</strong> — дистанцируйтесь.</li>
-                        </ul>
-                    </div>
-                    <div class="col">
-                        <ul class="method-list">
-                            <li><strong>4. Устранены ли причины провала решения?</strong> — проработайте реализацию.</li>
-                            <li><strong>5. Какая информация заставит пересмотреть решение?</strong> — определите триггеры разворота.</li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- СЛАЙД 8 - Тетралемма (расширенный выбор) -->
+            <div class="slide">
+                <div class="slide-title">🔄 Тетралемма</div>
+                <p><strong>Выход за рамки бинарного выбора «да/нет».</strong> Древнеиндийская логика + пятый вариант.</p>
+                <ul class="method-list">
+                    <li><strong>А</strong> (остаться на работе)</li>
+                    <li><strong>Б</strong> (уйти в бизнес)</li>
+                    <li><strong>А и Б одновременно</strong> (гибрид)</li>
+                    <li><strong>Ни А, ни Б</strong> (третья компания)</li>
+                    <li><strong>Пятый вариант</strong> — нечто совершенно иное (творческий отпуск, образование).</li>
+                </ul>
+                <div class="highlight-block">✨ Тетралемма раскрывает скрытые возможности, когда дилемма кажется неразрешимой.</div>
+            </div>
 
-                <!-- Методология 5W1H -->
-                <div class="section-sub">📋 Метод Киплинга (5W1H) — структурирование проблемы</div>
-                <div class="tags-container" style="margin-top: 0;">
+            <!-- СЛАЙД 9 - 5W1H (Киплинга) -->
+            <div class="slide">
+                <div class="slide-title">📋 5W1H / Метод Киплинга</div>
+                <p>Шесть вопросов для полного описания проблемы, проекта или задачи.</p>
+                <div class="tag-group">
                     <span class="tag">Who (кто?)</span>
                     <span class="tag">What (что?)</span>
                     <span class="tag">Where (где?)</span>
@@ -350,49 +389,150 @@
                     <span class="tag">Why (почему?)</span>
                     <span class="tag">How (как?)</span>
                 </div>
-                <p style="font-size: 15px; margin: 10px 0 20px;">Отвечая на эти 6 вопросов, вы получаете полную картину проекта, новости или бизнес-задачи. <em>«Хорошо описанная проблема — наполовину решена»</em>.</p>
-
-                <!-- стратегическая канва + SWOT -->
-                <div class="section-sub">⚡ Ситуационный анализ: SWOT, сценарный крест</div>
-                <div class="grid-2col">
-                    <div class="col">
-                        <div style="background: #F1F6FA; border-radius: 20px; padding: 18px;">
-                            <div style="font-weight: 700; margin-bottom: 8px;">✅ SWOT-анализ личности и проектов</div>
-                            <div>Сильные стороны (S) + Слабые (W) + Возможности (O) + Угрозы (T). <br>Важно: O и T — внешние явления, а не «я могу».</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div style="background: #F1F6FA; border-radius: 20px; padding: 18px;">
-                            <div style="font-weight: 700; margin-bottom: 8px;">🌍 Сценарный крест</div>
-                            <div>Выберите 2 главные неопределённости → получите 4 сценария. Готовьтесь к любому из них (пример: постковидная «новая нормальность»).</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Главный рецепт -->
-                <div class="section-title">💊 Главный рецепт реабилитации</div>
-                <div style="background: #EFF3F8; border-radius: 28px; padding: 24px; margin: 15px 0;">
-                    <div style="font-size: 22px; font-weight: 800; margin-bottom: 12px;">ДУМАТЬ → потом делать</div>
-                    <p style="margin-bottom: 12px;">Три шага перед любым решением:</p>
-                    <ol style="margin-left: 20px; color: #1F3A4B;">
-                        <li><strong>Отложите</strong> решение настолько, насколько возможно.</li>
-                        <li><strong>Оглянитесь</strong> — соберите релевантные и достоверные факты.</li>
-                        <li><strong>Рассмотрите варианты</strong> — решение это выбор альтернативы.</li>
-                    </ol>
-                    <p style="margin-top: 12px; font-style: italic;">«Когнитивные искажения неизбежны, но дисциплинированное мышление снижает их до нуля».</p>
-                </div>
-
-                <hr>
-                <div style="text-align: center; margin: 20px 0;">
-                    <span style="background: #F39C12; padding: 8px 20px; border-radius: 40px; font-weight: 600; font-size: 14px; color: #1A2C3E;">🎯 Интеллектуальная гигиена — ежедневная тренировка ума</span>
-                </div>
-                <p style="text-align: center; font-size: 15px;">По материалам книги <strong>«Как быть умнее: Рецепт реабилитации интеллектуальных инвалидов»</strong> (Алексей Мурзинов, 2025). Применяйте алгоритмы, задавайте правильные вопросы и развивайте системное мышление каждый день.</p>
+                <div class="example-quote">📌 Применение: управление проектами, журналистика, сегментация рынка. «Хорошо описанная проблема — наполовину решена».</div>
+                <div class="highlight-block">Структурирует мышление, помогает не упустить ни одного аспекта.</div>
             </div>
-            <div class="footer">
-                © Образовательный материал для стратегического управления | Мурзинов А.В. — Как быть умнее<br>
-                *Презентация адаптирована для почтовых клиентов — все ключевые методы и кейсы собраны для быстрого внедрения.
+
+            <!-- СЛАЙД 10 - Многокритериальный метод (взвешенная сумма) -->
+            <div class="slide">
+                <div class="slide-title">📊 Многокритериальный выбор (WSM)</div>
+                <p><strong>Взвешенная сумма критериев</strong> — рациональный выбор из нескольких альтернатив.</p>
+                <ul class="method-list">
+                    <li>1. Список критериев (без дублирования).</li>
+                    <li>2. Вес каждого критерия (% значимости).</li>
+                    <li>3. Оценка альтернатив в баллах (1–10).</li>
+                    <li>4. Взвешенная сумма → выбор лучшей.</li>
+                </ul>
+                <div class="example-quote">📌 Пример: выбор офиса (стоимость, оснащённость, удалённость). Офис А набрал максимум — рекомендован к аренде.</div>
+            </div>
+
+            <!-- СЛАЙД 11 - SWOT + Сценарный крест (два мощных инструмента) -->
+            <div class="slide">
+                <div class="slide-title">🔎 SWOT и Сценарный крест</div>
+                <div class="flex-between" style="gap: 1rem; flex-wrap: wrap;">
+                    <div style="flex:1; min-width: 180px;">
+                        <strong>SWOT-анализ</strong>
+                        <ul class="method-list" style="margin-top: 0.5rem;">
+                            <li><strong>S</strong> – сильные стороны</li>
+                            <li><strong>W</strong> – слабые стороны</li>
+                            <li><strong>O</strong> – возможности среды</li>
+                            <li><strong>T</strong> – угрозы</li>
+                        </ul>
+                        <div class="tag">Для компании, проекта, личности</div>
+                    </div>
+                    <div style="flex:1; min-width: 180px;">
+                        <strong>Сценарный крест</strong>
+                        <ul class="method-list" style="margin-top: 0.5rem;">
+                            <li>Выберите 2 главные неопределённости</li>
+                            <li>Постройте 4 сценария</li>
+                            <li>Готовьтесь к каждому</li>
+                        </ul>
+                        <div class="tag">Пример: постковидные сценарии</div>
+                    </div>
+                </div>
+                <div class="highlight-block mt-2">🎯 SWOT даёт план действий, сценарный крест — устойчивость в условиях неопределённости.</div>
+            </div>
+
+            <!-- СЛАЙД 12 - 5 вопросов против когнитивных искажений -->
+            <div class="slide">
+                <div class="slide-title">🧩 Алгоритм против когнитивных ловушек</div>
+                <p>Пять вопросов, которые помогут избежать предвзятости и системных ошибок.</p>
+                <ol style="margin-left: 1.2rem; margin-top: 1rem; line-height: 1.6;">
+                    <li><strong>Какую важную информацию я ещё не рассмотрел?</strong> — ищите противоречащие данные.</li>
+                    <li><strong>В какой степени мне свойственна предвзятость?</strong> — оцените перекосы, частоту срывов сроков.</li>
+                    <li><strong>Что посоветовал бы объективный консультант?</strong> — посмотрите со стороны.</li>
+                    <li><strong>Устранены ли причины провала решения?</strong> — проверьте реализуемость.</li>
+                    <li><strong>Какая новая информация заставит пересмотреть решение?</strong> — определите триггеры разворота.</li>
+                </ol>
+                <div class="example-quote">💡 Применяйте перед каждым важным решением: от бизнес-стратегии до бытового выбора.</div>
             </div>
         </div>
-    </center>
+    </div>
+
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevSlideBtn">← Назад</button>
+        <div class="dots" id="dotsContainer"></div>
+        <button class="nav-btn" id="nextSlideBtn">Вперёд →</button>
+    </div>
+    <footer>Деловая презентация | Инструменты стратегического мышления и принятия решений</footer>
+</div>
+
+<script>
+    const track = document.getElementById('slidesTrack');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const prevBtn = document.getElementById('prevSlideBtn');
+    const nextBtn = document.getElementById('nextSlideBtn');
+    const dotsContainer = document.getElementById('dotsContainer');
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function updateSlider() {
+        const width = track.parentElement.clientWidth;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        // обновить активные точки
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, idx) => {
+            if (idx === currentIndex) dot.classList.add('active');
+            else dot.classList.remove('active');
+        });
+    }
+
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === currentIndex) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                currentIndex = i;
+                updateSlider();
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function nextSlide() {
+        if (currentIndex < totalSlides - 1) {
+            currentIndex++;
+            updateSlider();
+        } else {
+            // loop to first optional: можно зациклить
+            // currentIndex = 0; updateSlider(); (если нужно раскомментировать)
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        } else {
+            // currentIndex = totalSlides-1; (cyclic)
+        }
+    }
+
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    window.addEventListener('resize', () => updateSlider());
+
+    // touch support for swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchEndX < touchStartX - 40) nextSlide();
+        if (touchEndX > touchStartX + 40) prevSlide();
+    });
+    // клавиши ← →
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+    });
+
+    createDots();
+    updateSlider();
+</script>
 </body>
 </html>
